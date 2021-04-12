@@ -1,9 +1,13 @@
 package com.example.demo.model;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import javax.servlet.http.HttpSession;
 
+@Component
+@Scope("session")
 public class Session {
-
     private HttpSession httpSession;
     private Long id;
     private String username;

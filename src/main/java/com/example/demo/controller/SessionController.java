@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Session;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -21,7 +23,6 @@ public class SessionController {
         sessionData.setUsername("hey");
         return new Session(httpSession);
     }
-
 
 }
 
