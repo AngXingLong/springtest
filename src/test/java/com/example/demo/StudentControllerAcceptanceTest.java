@@ -42,7 +42,7 @@ public class StudentControllerAcceptanceTest {
             MvcResult result =  mockMvc.perform(get("/hello"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string("Hello!"))
+                .andExpect(content().string("Hello"))
                 .andReturn();
 
         assertEquals("Hello", result.getResponse().getContentAsString());
