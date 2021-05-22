@@ -1,11 +1,13 @@
 package com.example.demo.controller;
 
+import java.util.Iterator;
 import java.util.Optional;
 
 import com.example.demo.model.Student;
 import com.example.demo.dao.StudentRepository;
 import com.example.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.history.Revisions;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -31,4 +33,19 @@ public class StudentController {
 
     @RequestMapping(value = "/update", method = { RequestMethod.GET, RequestMethod.POST })
     public void updateStudent(@RequestParam(required = true) Long id, @RequestParam(required = true) String name) { studentService.updateById(id, name);}
+
+    @Autowired
+    StudentRepository studentRepository;
+
+    @GetMapping()
+    public void helpNow(){
+        Revisions<Long, Student> revision = studentRepository.findRevisions(1L);
+
+        Iterator iterator = revision.iterator();
+
+        while(iterator.hasNext()) {
+            iterator.next();
+            System.out.println("a");
+        }
+    }
 }

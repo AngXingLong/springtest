@@ -5,8 +5,10 @@ import javax.persistence.*;
 
 import com.example.demo.model.Student;
 import com.fasterxml.jackson.annotation.*;
+import org.hibernate.envers.Audited;
 
 @Entity
+@Audited
 public class StudentPass {
 
     @Id

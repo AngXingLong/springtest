@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import org.hibernate.envers.Audited;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

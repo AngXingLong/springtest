@@ -14,8 +14,19 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.envers.repository.support.EnversRevisionRepositoryFactoryBean;
+import org.springframework.data.history.Revision;
+import org.springframework.data.history.Revisions;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
+@EnableJpaRepositories(repositoryFactoryBeanClass = EnversRevisionRepositoryFactoryBean.class)
+@EnableJpaAuditing
 public class Application {
 
     public static void main(String[] args) {
@@ -56,6 +67,16 @@ public class Application {
 
             studentRepository.save(s);
             studentPassRepository.save(sp);
+
+            sp.setName("abc");
+            studentPassRepository.save(sp);
+
+
+
+
+
+
+
             //studentRepository.save(new Student("Tom"));
             //studentRepository.save(new Student("Jerry"));
 

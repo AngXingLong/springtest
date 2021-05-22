@@ -4,8 +4,10 @@ package com.example.demo.model;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.*;
+import org.hibernate.envers.Audited;
 
 @Entity
+@Audited
 public class Book {
 
     @Id
@@ -14,7 +16,7 @@ public class Book {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "student_id", nullable = true, referencedColumnName = "id")
+    @JoinColumn(name = "student_id", nullable = true)
     @JsonBackReference
     private Student student;
 
